@@ -3,6 +3,7 @@
 import * as elements from './elements.js';
 import create from './player.js';
 import eventListeners from './event_listeners.js';
+import check from './result.js';
 
 console.log(elements.form);
 const playerOne = create.newPlayer('Messi', 'X', 0, 0);
