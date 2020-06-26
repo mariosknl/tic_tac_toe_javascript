@@ -5,7 +5,5 @@ import create from './player.js';
 import eventListeners from './event_listeners.js';
 import check from './result.js';
 
-console.log(elements.form);
 const playerOne = create.newPlayer('Messi', 'X', 0, 0);
 eventListeners.implement();
-console.log(elements.cells);
