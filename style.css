@@ -12,7 +12,8 @@
 body {
   height: 100vh;
   display: flex;
-  background-color: rgb(87,189,130);
+  background-color: rgb(87, 189, 130);
+
   /* position: relative; */
 }
 
@@ -68,15 +69,10 @@ div.active {
 }
 
 .board {
-  width: 100vw;
-  height: 100vh;
   display: grid;
-  justify-content: center;
-  align-content: center;
-  justify-items: center;
-  align-items: center;
   grid-template-columns: repeat(3, auto);
   position: absolute;
+  transform: translate(0, 0) !important;
 }
 
 .cell {
@@ -167,4 +163,18 @@ div.active {
   width: calc(var(--mark-size) * 0.7);
   height: calc(var(--mark-size) * 0.7);
   background-color: #fff;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) rotate(10deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
 }
