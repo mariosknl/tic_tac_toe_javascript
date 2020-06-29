@@ -120,7 +120,7 @@ div.active {
 .board.x .cell:not(.x):not(.circle):hover::before,
 .board.x .cell:not(.x):not(.circle):hover::after,
 .board.circle .cell:not(.x):not(.circle):hover::before {
-  background-color: lightgray;
+  background-color: rgb(4, 31, 15);
 }
 
 .cell.x::before,
@@ -162,7 +162,7 @@ div.active {
 .board.circle .cell:not(.x):not(.circle):hover::after {
   width: calc(var(--mark-size) * 0.7);
   height: calc(var(--mark-size) * 0.7);
-  background-color: #fff;
+  background-color: rgb(87, 189, 130);
 }
 
 @keyframes shake {

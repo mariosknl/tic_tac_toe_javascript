@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+
 import check from './result.js';
 import * as elements from './elements.js';
 
