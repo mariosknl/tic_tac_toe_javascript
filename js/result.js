@@ -1,33 +1,31 @@
+const test = (result, array, index, x, y) => {
+  result.push(array[index].classList[1]);
+  result.push(array[index + x].classList[1]);
+  result.push(array[index + y].classList[1]);
+  console.log(result);
+};
+
+const checkWinner = (result, ele) => {
+  if (ele !== 'circle' && ele !== 'x') {
+    return;
+  }
+  const resultChecker = result.filter((x) => x === ele);
+  if (resultChecker.length === 3) {
+    console.log('win');
+  }
+};
+
 function result() {
   const array = Array.from(document.querySelectorAll('.cell'));
   let result = [];
 
-  const test = (result, x, y) => {
-    result.push(elem.classList[1]);
-    result.push(array[index + x].classList[1]);
-    result.push(array[index + y].classList[1]);
-  };
-
   array.forEach((elem, index) => {
     if (index % 3 === 0) {
-      if (index === 0) {
-        test(result, 4, 8);
-      }
-      test(result, 1, 2);
-    } else if (index < 3) {
-      test(result, 3, 6);
-    }
-    const temp = [];
-
-    result.forEach((x) => {
-      if (x === elem) {
-        temp.push(x);
-      } if (index % 3 === 0) { }
-    });
-    console.log(result);
-    console.log(temp);
-    if (temp.length === 3) {
-      console.log('object');
+      test(result, array, index, 1, 2);
+      checkWinner(result, array[index].classList[1]);
+    } else if (index <= 2) {
+      test(result, array, index, 3, 6);
+      checkWinner(result, array[index].classList[1]);
     }
     result = [];
   });
