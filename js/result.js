@@ -1,3 +1,16 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-cycle */
+import * as elements from './elements.js';
+
+const win = () => {
+  elements.board.classList.remove('active');
+  elements.board.classList.remove('board');
+  elements.board.classList.add('winner');
+
+
+  elements.board.innerHTML = `      <h2>Winner</h2>
+  `;
+};
 const test = (result, array, index, x, y) => {
   result.push(array[index].classList[1]);
   result.push(array[index + x].classList[1]);
@@ -10,7 +23,7 @@ const checkWinner = (result, ele) => {
   }
   const resultChecker = result.filter((x) => x === ele);
   if (resultChecker.length === 3) {
-    console.log('win');
+    win();
   }
 };
 function checkRow(elem, index, array) {
