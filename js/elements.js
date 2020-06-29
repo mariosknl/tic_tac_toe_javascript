@@ -7,7 +7,8 @@ const playerTurn = { turn: 0 };
 const arrows = document.querySelectorAll('.fa-arrow-down');
 const form = document.getElementById('form');
 const formInputs = form.querySelectorAll('input');
+const players = [];
 
 export {
-  board, cells, winningMessage, restartButton, playerTurn, exitButton, arrows, form, formInputs,
+  board, cells, winningMessage, restartButton, playerTurn, exitButton, arrows, form, formInputs, players,
 };

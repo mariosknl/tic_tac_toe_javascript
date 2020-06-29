@@ -2,6 +2,7 @@
 
 import * as elements from './elements.js';
 import functions from './functions.js';
+import create from './player.js';
 
 const formSubmit = (input, parent, nextForm) => {
   // const input = arrow.previousElementSibling;
@@ -9,6 +10,8 @@ const formSubmit = (input, parent, nextForm) => {
 
   if (input.type === 'text' && functions.validateUser(input)) {
     functions.nextSlide(parent, nextForm);
+    const player = create.newPlayer(input.value, 0, 0);
+    elements.players.push(player);
   } else {
     parent.style.animation = 'shake 0.5s ease';
   }

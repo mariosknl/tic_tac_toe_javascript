@@ -10,6 +10,11 @@ function togglePlayerSign() {
 
 const populateBoard = (e, move) => {
   e.target.classList.add(move.turn % 2 === 0 ? 'circle' : 'x');
+  if (move.turn % 2 === 0) {
+    console.log(elements.players[0]);
+  } else {
+    console.log(elements.players[1]);
+  }
   check.result();
   move.turn += 1;
   togglePlayerSign();

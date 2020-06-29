@@ -6,8 +6,17 @@ const win = () => {
   elements.board.classList.remove('active');
   elements.board.classList.remove('board');
   elements.board.classList.add('winner');
+  if (elements.playerTurn.turn % 2 === 0) {
+    elements.players[0].gamesWon += 1;
+    elements.players[0].gamesPlayed += 1;
+    elements.players[1].gamesPlayed += 1;
+  } else {
+    elements.players[1].gamesWon += 1;
+    elements.players[1].gamesPlayed += 1;
+    elements.players[0].gamesPlayed += 1;
+  }
 
-
+  console.log(elements.players);
   elements.board.innerHTML = `      <h2>Winner</h2>
   `;
 };
