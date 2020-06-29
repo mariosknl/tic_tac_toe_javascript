@@ -4,10 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <script
+  src="https://kit.fontawesome.com/526bcd4356.js"
+  crossorigin="anonymous"
+></script>
   <title>Document</title>
 </head>
 <body>
-  <div class="board x" id="board">
+  <form>
+    <div class="field-name inactive">
+      <i class="fas fa-user"></i>
+      <input type="text" placeholder="Player1 Username" required>
+      <i class="fas fa-arrow-down"></i>
+    </div>
+    <div class="field-name inactive">
+      <i class="fas fa-user"></i>
+      <input type="text" placeholder="Player2 Username" required>
+      <i class="fas fa-arrow-down"></i>
+    </div>
+  </form>
+  <div class="board circle" id="board">
     <div class="cell"></div>
     <div class="cell"></div>
     <div class="cell"></div>
