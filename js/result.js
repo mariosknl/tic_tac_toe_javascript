@@ -9,13 +9,17 @@ function winner(player1, player2) {
     player2.gamesPlayed += 1;
     player1.winner = true;
     player2.winner = false;
+    elements.winnerText[0].innerText = `${player1.name} has won!`;
   } else {
     player2.gamesWon += 1;
     player2.gamesPlayed += 1;
     player1.gamesPlayed += 1;
     player1.winner = false;
     player2.winner = true;
+    elements.winnerText[0].innerText = `${player2.name} has won!`;
   }
+  elements.winnerText[1].innerText = `${player1.name} has ${player1.gamesWon} victories!`;
+  elements.winnerText[2].innerText = `${player2.name} has ${player2.gamesWon} victories!`;
 }
 
 const win = () => {

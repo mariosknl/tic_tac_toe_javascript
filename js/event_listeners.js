@@ -18,6 +18,8 @@ const formSubmit = (input, parent, nextForm) => {
 };
 
 const implement = () => {
+  elements.restartButton.addEventListener('click', functions.restartGame);
+
   elements.cells.forEach(elem => elem.addEventListener('click', (e) => { functions.populateBoard(e, elements.playerTurn); }, { once: true }));
 
   elements.formInputs.forEach((input) => {

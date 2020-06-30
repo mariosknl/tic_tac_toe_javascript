@@ -12,7 +12,7 @@
   </head>
   <body>
     <form id="form">
-      <div class="field-name inactive">
+      <div class="field-name active">
         <i class="fas fa-user"></i>
         <input type="text" placeholder="Player1 Username" required />
         <i class="fas fa-arrow-down"></i>
@@ -35,7 +35,7 @@
         <div class="cell"></div>
       </div>
     </form>
-    <div class="winning-message active" id="winningMessage">
+    <div class="winning-message inactive" id="winningMessage">
       <div class="container">
         <div class="btn-container">
           <button id="restartButton">RESTART!</button>
@@ -43,8 +43,9 @@
         <div class="img-container">
           <img src="./images/undraw_winners_ao2o.svg" />
           <div class="winners">
-            <h1 class="message">Winner!</h1>
-            <h6>Congratulations Player something</h6>
+            <h1 class="message">Player Something Won.</h1>
+            <h6 class="message">Player one victories</h6>
+            <h6 class="message">Player two victories</h6>
           </div>
         </div>
         <div class="btn-container">

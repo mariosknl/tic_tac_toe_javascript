@@ -39,7 +39,25 @@ function nextSlide(parent, nextForm) {
   nextForm.classList.remove('inactive');
 }
 
+function restartGame() {
+  console.log('a');
+  elements.cells.forEach((cell) => {
+    cell.classList.remove(cell.classList.contains('circle') ? 'circle' : 'x');
+  });
+  elements.board.classList.remove('inactive');
+  elements.board.classList.add('active');
+  elements.winningMessage.classList.remove('active');
+  elements.winningMessage.classList.add('inactive');
+  elements.playerTurn.turn = 0;
+  elements.cells.forEach(elem => elem.addEventListener('click', (e) => { populateBoard(e, elements.playerTurn); }, { once: true }));
+  togglePlayerSign();
+
+
+  // elements.playerTurn.turn = 0;
+  // elements.cells.forEach(elem => elem.addEventListener('click', (e) => { populateBoard(e, elements.playerTurn); }, { once: true }));
+}
+
 
 export default {
-  populateBoard, validateUser, error, nextSlide,
+  populateBoard, validateUser, error, nextSlide, restartGame,
 };
