@@ -127,7 +127,7 @@ div.active {
 .cell.x::after,
 .board.x .cell:not(.x):not(.circle):hover::before,
 .board.x .cell:not(.x):not(.circle):hover::after {
-  content: '';
+  content: "";
   width: calc(var(--mark-size) * 0.15);
   position: absolute;
   height: var(--mark-size);
@@ -147,7 +147,7 @@ div.active {
 .cell.circle::after,
 .board.circle .cell:not(.x):not(.circle):hover::before,
 .board.circle .cell:not(.x):not(.circle):hover::after {
-  content: '';
+  content: "";
   position: absolute;
   border-radius: 50%;
 }
@@ -173,18 +173,66 @@ div.active {
 }
 
 .winning-message img {
-  position: absolute;
+  /* position: absolute;
   width: 80%;
   height: 90%;
-  top: -10%;
+  top: -10%; */
+  width: 100%;
+  height: 71%;
 }
 
 .winner {
   position: absolute;
   top: 60%;
   left: 50%;
-  font-size: 5rem;
   transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 30%;
+}
+
+.winner .message {
+  font-size: 4rem;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  padding: 0 10rem;
+}
+
+.img-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-content: center; */
+  align-items: center;
+}
+
+.winners {
+  height: 100%;
+  width: 100%;
+  /* text-align: center; */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+}
+
+.btn-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 20%;
+}
+
+.btn-container button {
+  height: 10%;
+  width: 100%;
 }
 
 @keyframes shake {
