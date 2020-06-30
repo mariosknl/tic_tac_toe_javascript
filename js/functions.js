@@ -49,10 +49,13 @@ function nextSlide(parent, nextForm) {
 let count = 0;
 function restartGame() {
   if (elements.players[0].start === true) {
+    elements.board.classList.value = 'board x active';
     elements.players[0].start = false;
     elements.players[1].start = true;
     count = 1;
   } else {
+    elements.board.classList.value = 'board circle active';
+
     elements.players[0].start = true;
     elements.players[1].start = false;
     count = 0;
