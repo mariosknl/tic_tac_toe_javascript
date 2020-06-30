@@ -20,12 +20,14 @@ const formSubmit = (input, parent, nextForm) => {
   } else {
     parent.style.animation = 'shake 0.5s ease';
   }
+  if (elements.players.length === 2) {
+    elements.players[0].start = true;
+  }
 };
 
 const implement = () => {
   elements.restartButton.addEventListener('click', functions.restartGame);
-
-  elements.cells.forEach(elem => elem.addEventListener('click', (e) => { functions.populateBoard(e, elements.playerTurn); }, { once: true }));
+  elements.cells.forEach(elem => elem.addEventListener('click', (e) => { functions.populateBoard(e, elements.playerTurn); }));
 
   elements.formInputs.forEach((input) => {
     input.addEventListener('keydown', (e) => {

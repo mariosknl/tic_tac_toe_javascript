@@ -9,8 +9,8 @@ const form = document.getElementById('form');
 const formInputs = form.querySelectorAll('input');
 const players = [];
 const winnerText = document.querySelectorAll('.winners .message');
-
 export {
   board, cells, winningMessage, restartButton, playerTurn,
   exitButton, arrows, form, formInputs, players, winnerText,
+
 };

@@ -4,6 +4,7 @@ function newPlayer(name, symbol = '', gamesPlayed = 0, gamesWon = 0) {
     gamesPlayed,
     gamesWon,
     winner: false,
+    start: false,
     symbol,
   };
 }
