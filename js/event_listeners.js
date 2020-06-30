@@ -10,8 +10,13 @@ const formSubmit = (input, parent, nextForm) => {
 
   if (input.type === 'text' && functions.validateUser(input)) {
     functions.nextSlide(parent, nextForm);
-    const player = create.newPlayer(input.value, 0, 0);
-    elements.players.push(player);
+    if (elements.players.length === 0) {
+      const player = create.newPlayer(input.value, 'circle');
+      elements.players.push(player);
+    } else {
+      const player = create.newPlayer(input.value, 'x');
+      elements.players.push(player);
+    }
   } else {
     parent.style.animation = 'shake 0.5s ease';
   }
