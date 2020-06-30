@@ -27,6 +27,8 @@ const formSubmit = (input, parent, nextForm) => {
 
 const implement = () => {
   elements.restartButton.addEventListener('click', functions.restartGame);
+  elements.exitButton.addEventListener('click', functions.exitGame);
+
   elements.cells.forEach(elem => elem.addEventListener('click', (e) => { functions.populateBoard(e, elements.playerTurn); }));
 
   elements.formInputs.forEach((input) => {
@@ -47,18 +49,3 @@ const implement = () => {
 
 
 export default { implement };
-
-
-// elements.arrows.forEach((arrow) => {
-//   arrow.addEventListener('click', () => {
-//     const input = arrow.previousElementSibling;
-//     const parent = arrow.parentElement;
-//     const nextForm = arrow.parentElement.nextElementSibling;
-
-//     if (input.type === 'text' && functions.validateUser(input)) {
-//       functions.nextSlide(parent, nextForm);
-//     } else {
-//       parent.style.animation = 'shake 0.5s ease';
-//     }
-//   });
-// });

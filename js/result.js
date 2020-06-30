@@ -36,6 +36,16 @@ const test = (result, array, index, x, y) => {
   result.push(array[index + y].classList[1]);
 };
 
+const draw = (player1, player2) => {
+  player1.gamesPlayed += 1;
+  player2.gamesPlayed += 1;
+  elements.winnerText[0].innerText = "It's a draw";
+  elements.board.classList.remove('active');
+  elements.board.classList.add('inactive');
+  elements.winningMessage.classList.remove('inactive');
+  elements.winningMessage.classList.add('active');
+};
+
 const checkWinner = (result, ele) => {
   if (ele !== 'circle' && ele !== 'x') {
     return;
@@ -43,6 +53,8 @@ const checkWinner = (result, ele) => {
   const resultChecker = result.filter((x) => x === ele);
   if (resultChecker.length === 3) {
     win();
+  } else if (elements.playerTurn.turn === 8) {
+    draw(elements.players[0], elements.players[1]);
   }
 };
 

@@ -14,16 +14,9 @@ const populateBoard = (e, move) => {
     return '';
   }
   e.target.classList.add(move.turn % 2 === 0 ? 'circle' : 'x');
-  // e.target.classList.add(playerSymbol);
 
-  if (move.turn % 2 === 0) {
-    console.log(elements.players[0]);
-  } else {
-    console.log(elements.players[1]);
-  }
   check.result();
   move.turn += 1;
-  console.log(move.turn);
   togglePlayerSign();
   return '';
 };
@@ -61,7 +54,6 @@ function restartGame() {
     count = 0;
   }
 
-  console.log(count);
   elements.cells.forEach((cell) => {
     cell.classList.remove(cell.classList.contains('circle') ? 'circle' : 'x');
   });
@@ -70,13 +62,23 @@ function restartGame() {
   elements.winningMessage.classList.remove('active');
   elements.winningMessage.classList.add('inactive');
   elements.playerTurn.turn = count;
+}
 
-
-  // elements.playerTurn.turn = 0;
-  // elements.cells.forEach(elem => elem.addEventListener('click', (e) => { populateBoard(e, elements.playerTurn); }, { once: true }));
+function exitGame() {
+  elements.players.pop();
+  elements.players.pop();
+  elements.winningMessage.classList.remove('active');
+  elements.winningMessage.classList.add('inactive');
+  elements.form.firstElementChild.classList.remove('inactive');
+  elements.form.firstElementChild.classList.add('active');
+  elements.form.reset();
+  elements.cells.forEach((cell) => {
+    cell.classList.remove(cell.classList.contains('circle') ? 'circle' : 'x');
+  });
+  elements.playerTurn.turn = 0;
 }
 
 
 export default {
-  populateBoard, validateUser, error, nextSlide, restartGame,
+  populateBoard, validateUser, error, nextSlide, restartGame, exitGame,
 };
