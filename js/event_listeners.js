@@ -30,7 +30,8 @@ const implement = () => {
 
   elements.arrows.forEach((arrow) => {
     arrow.addEventListener('click', () => {
-      formSubmit(arrow.previousElementSibling, arrow.parentElement, arrow.parentElement.nextElementSibling);
+      formSubmit(arrow.previousElementSibling, arrow.parentElement,
+        arrow.parentElement.nextElementSibling);
     });
   });
 };

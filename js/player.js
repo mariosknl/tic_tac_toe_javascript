@@ -1,8 +1,9 @@
-function newPlayer(name, symbol, gamesPlayed, gamesWon) {
+function newPlayer(name, symbol, gamesPlayed = 0, gamesWon = 0) {
   return {
     name,
     gamesPlayed,
     gamesWon,
+    winner: false,
   };
 }
 

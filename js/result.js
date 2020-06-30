@@ -2,24 +2,30 @@
 /* eslint-disable import/no-cycle */
 import * as elements from './elements.js';
 
+function winner(player1, player2) {
+  if (elements.playerTurn.turn % 2 === 0) {
+    player1.gamesWon += 1;
+    player1.gamesPlayed += 1;
+    player2.gamesPlayed += 1;
+    player1.winner = true;
+    player2.winner = false;
+  } else {
+    player2.gamesWon += 1;
+    player2.gamesPlayed += 1;
+    player1.gamesPlayed += 1;
+    player1.winner = false;
+    player2.winner = true;
+  }
+}
+
 const win = () => {
   elements.board.classList.remove('active');
-  elements.board.classList.remove('board');
-  elements.board.classList.add('winner');
-  if (elements.playerTurn.turn % 2 === 0) {
-    elements.players[0].gamesWon += 1;
-    elements.players[0].gamesPlayed += 1;
-    elements.players[1].gamesPlayed += 1;
-  } else {
-    elements.players[1].gamesWon += 1;
-    elements.players[1].gamesPlayed += 1;
-    elements.players[0].gamesPlayed += 1;
-  }
-
-  console.log(elements.players);
-  elements.board.innerHTML = `      <h2>Winner</h2>
-  `;
+  elements.board.classList.add('inactive');
+  elements.winningMessage.classList.remove('inactive');
+  elements.winningMessage.classList.add('active');
+  winner(elements.players[0], elements.players[1]);
 };
+
 const test = (result, array, index, x, y) => {
   result.push(array[index].classList[1]);
   result.push(array[index + x].classList[1]);
@@ -35,6 +41,7 @@ const checkWinner = (result, ele) => {
     win();
   }
 };
+
 function checkRow(elem, index, array) {
   const result = [];
   if (index % 3 === 0) {
@@ -71,5 +78,6 @@ function result() {
     checkDiagonal(elem, index, array);
   });
 }
+
 
 export default { result };

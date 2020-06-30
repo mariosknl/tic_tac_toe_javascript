@@ -12,7 +12,7 @@
   </head>
   <body>
     <form id="form">
-      <div class="field-name active">
+      <div class="field-name inactive">
         <i class="fas fa-user"></i>
         <input type="text" placeholder="Player1 Username" required />
         <i class="fas fa-arrow-down"></i>
@@ -35,9 +35,11 @@
         <div class="cell"></div>
       </div>
     </form>
-    <div class="winning-message" id="winningMessage">
+    <div class="winning-message active" id="winningMessage">
       <button id="restartButton">RESTART!</button>
       <button id="exitButton">EXIT</button>
+      <img  src="./images/undraw_winners_ao2o.svg">
+      <h1 class="winner">Winner!</h1>
     </div>
     <script src="./js/main.js" type="module"></script>
   </body>
