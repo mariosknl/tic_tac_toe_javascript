@@ -46,52 +46,67 @@ const draw = (player1, player2) => {
   elements.winningMessage.classList.add('active');
 };
 
-const checkWinner = (result, ele) => {
+function checkWinner(result, ele) {
+  let temp = false;
   if (ele !== 'circle' && ele !== 'x') {
-    return;
+    return '';
   }
   const resultChecker = result.filter((x) => x === ele);
   if (resultChecker.length === 3) {
     win();
-  } else if (elements.playerTurn.turn === 8) {
+    temp = true;
+  } else if (elements.playerTurn.turn === 8 && temp === false) {
     draw(elements.players[0], elements.players[1]);
   }
-};
+  return temp;
+}
 
 function checkRow(elem, index, array) {
   const result = [];
+  let checker;
   if (index % 3 === 0) {
     test(result, array, index, 1, 2);
-    checkWinner(result, array[index].classList[1]);
+    checker = checkWinner(result, array[index].classList[1]);
   }
+  return checker;
 }
 
 function checkColumn(elem, index, array) {
   const result = [];
+  let checker;
   if (index < 3) {
     test(result, array, index, 3, 6);
-    checkWinner(result, array[index].classList[1]);
+    checker = checkWinner(result, array[index].classList[1]);
   }
+  return checker;
 }
 
 function checkDiagonal(elem, index, array) {
   const result = [];
+  let checker;
   if (index === 0) {
     test(result, array, index, 4, 8);
-    checkWinner(result, array[index].classList[1]);
-  } else if (index === 2) {
-    test(result, array, index, 2, 4);
-    checkWinner(result, array[index].classList[1]);
+    checker = checkWinner(result, array[index].classList[1]);
+  // } else if (index === 2 && checker !== true) {
+  //   test(result, array, index, 2, 4);
+  //   checker = checkWinner(result, array[index].classList[1]);
   }
+  return checker;
 }
 
 function result() {
   const array = Array.from(document.querySelectorAll('.cell'));
 
   array.forEach((elem, index) => {
-    checkRow(elem, index, array);
-    checkColumn(elem, index, array);
-    checkDiagonal(elem, index, array);
+    if (checkRow(elem, index, array) === true) {
+      return '';
+    }
+    if (checkColumn(elem, index, array) === true) {
+      return '';
+    }
+    if (checkDiagonal(elem, index, array) === true) {
+      return '';
+    }
   });
 }
 
