@@ -41,6 +41,7 @@ function nextSlide(parent, nextForm) {
 }
 let count = 0;
 function restartGame() {
+  document.querySelector('.message').innerText = ('');
   if (elements.players[0].start === true) {
     elements.board.classList.value = 'board x active';
     elements.players[0].start = false;

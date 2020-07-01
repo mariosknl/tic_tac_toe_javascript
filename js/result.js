@@ -48,22 +48,21 @@ const draw = (player1, player2) => {
 
 function checkWinner(result, ele) {
   let temp = false;
+
   if (ele !== 'circle' && ele !== 'x') {
-    return '';
+    return temp;
   }
   const resultChecker = result.filter((x) => x === ele);
   if (resultChecker.length === 3) {
-    win();
     temp = true;
-  } else if (elements.playerTurn.turn === 8 && temp === false) {
-    draw(elements.players[0], elements.players[1]);
+    win();
   }
   return temp;
 }
 
 function checkRow(elem, index, array) {
   const result = [];
-  let checker;
+  let checker = false;
   if (index % 3 === 0) {
     test(result, array, index, 1, 2);
     checker = checkWinner(result, array[index].classList[1]);
@@ -73,7 +72,7 @@ function checkRow(elem, index, array) {
 
 function checkColumn(elem, index, array) {
   const result = [];
-  let checker;
+  let checker = false;
   if (index < 3) {
     test(result, array, index, 3, 6);
     checker = checkWinner(result, array[index].classList[1]);
@@ -83,31 +82,30 @@ function checkColumn(elem, index, array) {
 
 function checkDiagonal(elem, index, array) {
   const result = [];
-  let checker;
+  let checker = false;
   if (index === 0) {
     test(result, array, index, 4, 8);
     checker = checkWinner(result, array[index].classList[1]);
-  // } else if (index === 2 && checker !== true) {
-  //   test(result, array, index, 2, 4);
-  //   checker = checkWinner(result, array[index].classList[1]);
+  } else if (index === 2 && checker !== true) {
+    test(result, array, index, 2, 4);
+    checker = checkWinner(result, array[index].classList[1]);
   }
   return checker;
 }
 
 function result() {
   const array = Array.from(document.querySelectorAll('.cell'));
-
   array.forEach((elem, index) => {
-    if (checkRow(elem, index, array) === true) {
-      return '';
-    }
-    if (checkColumn(elem, index, array) === true) {
-      return '';
-    }
-    if (checkDiagonal(elem, index, array) === true) {
-      return '';
-    }
+    checkRow(elem, index, array);
+    checkColumn(elem, index, array);
+    checkDiagonal(elem, index, array);
   });
+  const whatever = document.querySelector('.message').innerText.includes('won');
+  if (whatever) {
+    console.log('who cares');
+  } else if (elements.playerTurn.turn > 7 && !whatever) {
+    draw(elements.players[0], elements.players[1]);
+  }
 }
 
 
