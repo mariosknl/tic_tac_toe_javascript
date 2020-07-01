@@ -100,10 +100,9 @@ function result() {
     checkColumn(elem, index, array);
     checkDiagonal(elem, index, array);
   });
-  const whatever = document.querySelector('.message').innerText.includes('won');
-  if (whatever) {
-    console.log('who cares');
-  } else if (elements.playerTurn.turn > 7 && !whatever) {
+  const checker = document.querySelector('.message').innerText.includes('won');
+  const count = elements.players[0].start ? 8 : 9;
+  if (elements.playerTurn.turn === count && !checker) {
     draw(elements.players[0], elements.players[1]);
   }
 }
