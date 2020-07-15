@@ -4,10 +4,10 @@ import check from './result.js';
 import * as elements from './elements.js';
 
 
-function togglePlayerSign() {
-  elements.board.classList.toggle('x');
-  elements.board.classList.toggle('circle');
-}
+const togglePlayerSign = (board = elements.board) => {
+  board.classList.toggle('x');
+  board.classList.toggle('circle');
+};
 
 const populateBoard = (e, move) => {
   if (e.target.classList.contains('circle') || e.target.classList.contains('x')) {
@@ -81,5 +81,5 @@ function exitGame() {
 
 
 export default {
-  populateBoard, validateUser, error, nextSlide, restartGame, exitGame,
+  togglePlayerSign, populateBoard, validateUser, error, nextSlide, restartGame, exitGame,
 };

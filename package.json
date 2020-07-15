@@ -4,7 +4,8 @@
   "description": "This is the famous tic-tac-toe game written in Javascript. We implemented some extra features to it.This is a game for 2 players. While starting the game you will be asked to enter your names. After that, you will see a big square divided in 9 equally sized smaller spaces. In each turn, the player chooses an empty space. Each player icon is unique and it is represented either by X or O. The main goal of this game is to mark a straight single line in sequence. This will make you a winner. You are not allowed to take other's player position. You should only capture free spaces. If, in the end, none of the players achieve a straight single line the result is Draw and you have to re-run a new one.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "testwatch": "jest --watchAll"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/mariosknl/tic_tac_toe_javascript/issues"
   },
-  "homepage": "https://github.com/mariosknl/tic_tac_toe_javascript#readme"
+  "homepage": "https://github.com/mariosknl/tic_tac_toe_javascript#readme",
+  "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "jest": "^26.1.0"
+  }
 }
