@@ -60,6 +60,31 @@ beforeEach(() => {
   `;
 });
 
+// form submition tests
+test('test the player creation', () => {
+  // add event linsterners
+  // const fn = require('../js/functions');
+  const eL = require('../js/event_listeners');
+  const $ = require('jquery');
+
+  const elements = require('../js/elements');
+  elements.arrows.forEach((arrow) => {
+    arrow.addEventListener('click', () => {
+      eL.default.formSubmit(
+        arrow.previousElementSibling,
+        arrow.parentElement,
+        arrow.parentElement.nextElementSibling,
+      );
+    });
+    document.querySelectorAll('input')[0].value = 'player1';
+    $(elements.arrows[0]).click();
+    document.querySelectorAll('input')[0].value = 'player2';
+    $(elements.arrows[0]).click();
+  });
+  expect(elements.players[0].name).toBe('player1');
+  expect(elements.players[1].name).toBe('player2');
+});
+
 // toggle player sign
 test('toggle player signs', () => {
   const fn = require('../js/functions');
