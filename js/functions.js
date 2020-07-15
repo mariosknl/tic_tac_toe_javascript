@@ -3,17 +3,16 @@
 import check from './result.js';
 import * as elements from './elements.js';
 
-
 const togglePlayerSign = (board = elements.board) => {
   board.classList.toggle('x');
   board.classList.toggle('circle');
 };
 
-const populateBoard = (e, move) => {
-  if (e.target.classList.contains('circle') || e.target.classList.contains('x')) {
+const populateBoard = ({ target }, move) => {
+  if (target.classList.contains('circle') || target.classList.contains('x')) {
     return '';
   }
-  e.target.classList.add(move.turn % 2 === 0 ? 'circle' : 'x');
+  target.classList.add(move.turn % 2 === 0 ? 'circle' : 'x');
 
   check.result();
   move.turn += 1;
@@ -29,7 +28,8 @@ function validateUser(user) {
   if (user.value.length < 3) {
     error('rgb(189,87,87');
     return '';
-  } error('rgb(87,189,130');
+  }
+  error('rgb(87,189,130');
   return true;
 }
 
@@ -41,7 +41,7 @@ function nextSlide(parent, nextForm) {
 }
 let count = 0;
 function restartGame() {
-  document.querySelector('.message').innerText = ('');
+  document.querySelector('.message').innerText = '';
   if (elements.players[0].start === true) {
     elements.board.classList.value = 'board x active';
     elements.players[0].start = false;
@@ -79,7 +79,12 @@ function exitGame() {
   elements.playerTurn.turn = 0;
 }
 
-
 export default {
-  togglePlayerSign, populateBoard, validateUser, error, nextSlide, restartGame, exitGame,
+  togglePlayerSign,
+  populateBoard,
+  validateUser,
+  error,
+  nextSlide,
+  restartGame,
+  exitGame,
 };

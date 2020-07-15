@@ -60,7 +60,6 @@ beforeEach(() => {
   `;
 });
 
-
 // toggle player sign
 test('toggle player signs', () => {
   const fn = require('../js/functions');
@@ -70,3 +69,13 @@ test('toggle player signs', () => {
 });
 
 // checking populateBoard
+test('populate the board with signs', () => {
+  const fn = require('../js/functions');
+  const elements = require('../js/elements');
+  const $ = require('jquery');
+  elements.cells[0].addEventListener('click', (e) => {
+    fn.default.populateBoard(e, elements.playerTurn);
+  });
+  $(elements.cells[0]).click();
+  expect(elements.cells[0].classList.contains('circle')).toBeTruthy();
+});
