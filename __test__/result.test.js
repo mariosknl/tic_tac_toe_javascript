@@ -60,6 +60,7 @@ beforeEach(() => {
   `;
 });
 
+// checking rows match for win
 test('check the rows for a winner', () => {
   const result = require('../js/result');
   document.getElementById('board').innerHTML = `        <div class="board circle inactive" id="board">
@@ -77,6 +78,7 @@ test('check the rows for a winner', () => {
   expect(result.default.checkRow('x', 0, array, true)).toBeTruthy();
 });
 
+// checking rows for win - falsy
 test('check the rows for not a winner', () => {
   const result = require('../js/result');
   document.getElementById('board').innerHTML = `        <div class="board circle inactive" id="board">
@@ -94,6 +96,7 @@ test('check the rows for not a winner', () => {
   expect(result.default.checkRow('x', 0, array, true)).toBeFalsy();
 });
 
+// check columns for win
 test('check the columns for a winner', () => {
   const result = require('../js/result');
   document.getElementById('board').innerHTML = `        <div class="board circle inactive" id="board">
@@ -111,6 +114,7 @@ test('check the columns for a winner', () => {
   expect(result.default.checkColumn('x', 0, array, true)).toBeTruthy();
 });
 
+// check columns for win - falsy
 test('check the columns for not a winner', () => {
   const result = require('../js/result');
   document.getElementById('board').innerHTML = `        <div class="board circle inactive" id="board">
@@ -128,6 +132,7 @@ test('check the columns for not a winner', () => {
   expect(result.default.checkColumn('x', 0, array, true)).toBeFalsy();
 });
 
+// check diagonal for win
 test('check the diagonal one for a winner', () => {
   const result = require('../js/result');
   document.getElementById('board').innerHTML = `        <div class="board circle inactive" id="board">
@@ -145,6 +150,7 @@ test('check the diagonal one for a winner', () => {
   expect(result.default.checkDiagonal('x', 0, array, true)).toBeTruthy();
 });
 
+// check other diagonal for win
 test('check the diagonal two for a winner', () => {
   const result = require('../js/result');
   document.getElementById('board').innerHTML = `        <div class="board circle inactive" id="board">
@@ -162,6 +168,7 @@ test('check the diagonal two for a winner', () => {
   expect(result.default.checkDiagonal('x', 2, array, true)).toBeTruthy();
 });
 
+// return draw for game
 test('check if the game is drawn', () => {
   const result = require('../js/result');
   document.getElementById('board').innerHTML = `        <div class="board circle inactive" id="board">
@@ -178,5 +185,13 @@ test('check if the game is drawn', () => {
   const elements = require('../js/elements');
 
   result.default.result(9);
+  expect(elements.board.classList.contains('inactive')).toBeTruthy();
+});
+
+// test the win function
+test('test the win function', () => {
+  const elements = require('../js/elements');
+  const result = require('../js/result');
+  result.default.win(true);
   expect(elements.board.classList.contains('inactive')).toBeTruthy();
 });

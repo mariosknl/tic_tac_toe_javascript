@@ -22,12 +22,12 @@ function winner(player1, player2) {
   elements.winnerText[2].innerText = `${player2.name} has ${player2.gamesWon} victories!`;
 }
 
-const win = () => {
+const win = (test = null) => {
   elements.board.classList.remove('active');
   elements.board.classList.add('inactive');
   elements.winningMessage.classList.remove('inactive');
   elements.winningMessage.classList.add('active');
-  winner(elements.players[0], elements.players[1]);
+  if (test === null)winner(elements.players[0], elements.players[1]);
 };
 
 const test = (result, array, index, x, y) => {
@@ -113,5 +113,5 @@ function result(count = null) {
 
 
 export default {
-  result, checkRow, checkColumn, checkDiagonal, draw,
+  result, checkRow, checkColumn, checkDiagonal, draw, win,
 };
