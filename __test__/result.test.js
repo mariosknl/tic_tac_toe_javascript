@@ -44,7 +44,7 @@ beforeEach(() => {
           <div class="img-container">
             <img src="./images/undraw_winners_ao2o.svg" />
             <div class="winners">
-              <h1 class="message">Player Something Won.</h1>
+              <h1 class="message">Player Something.</h1>
               <h6 class="message">Player one victories</h6>
               <h6 class="message">Player two victories</h6>
             </div>
@@ -160,4 +160,23 @@ test('check the diagonal two for a winner', () => {
 </div>`;
   const array = Array.from(document.querySelectorAll('.cell'));
   expect(result.default.checkDiagonal('x', 2, array, true)).toBeTruthy();
+});
+
+test('check if the game is drawn', () => {
+  const result = require('../js/result');
+  document.getElementById('board').innerHTML = `        <div class="board circle inactive" id="board">
+  <div class="cell"></div>
+  <div class="cell"></div>
+  <div class="cell x"></div>
+  <div class="cell circle"></div>
+  <div class="cell x"></div>
+  <div class="cell"></div>
+  <div class="cell"></div>
+  <div class="cell"></div>
+  <div class="cell"></div>
+</div>`;
+  const elements = require('../js/elements');
+
+  result.default.result(9);
+  expect(elements.board.classList.contains('inactive')).toBeTruthy();
 });

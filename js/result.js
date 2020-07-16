@@ -100,8 +100,12 @@ function result(count = null) {
     checkColumn(elem, index, array);
     checkDiagonal(elem, index, array);
   });
-  const checker = document.querySelector('.message').innerText.includes('won');
+  let checker;
+
+  if (!count) checker = document.querySelector('h1').innerText.includes('won');
+  if (count) elements.playerTurn.turn = 8;
   if (count === null) count = elements.players[0].start ? 8 : 9;
+
   if (elements.playerTurn.turn === count && !checker) {
     draw(elements.players[0], elements.players[1]);
   }
@@ -109,5 +113,5 @@ function result(count = null) {
 
 
 export default {
-  result, checkRow, checkColumn, checkDiagonal,
+  result, checkRow, checkColumn, checkDiagonal, draw,
 };
