@@ -46,7 +46,7 @@ const draw = (player1, player2) => {
   elements.winningMessage.classList.add('active');
 };
 
-function checkWinner(result, ele) {
+function checkWinner(result, ele, test = null) {
   let temp = false;
 
   if (ele !== 'circle' && ele !== 'x') {
@@ -55,40 +55,40 @@ function checkWinner(result, ele) {
   const resultChecker = result.filter((x) => x === ele);
   if (resultChecker.length === 3) {
     temp = true;
-    win();
+    if (test === null) win();
   }
   return temp;
 }
 
-function checkRow(elem, index, array) {
+function checkRow(elem, index, array, tests = null) {
   const result = [];
   let checker = false;
   if (index % 3 === 0) {
     test(result, array, index, 1, 2);
-    checker = checkWinner(result, array[index].classList[1]);
+    checker = checkWinner(result, array[index].classList[1], tests);
   }
   return checker;
 }
 
-function checkColumn(elem, index, array) {
+function checkColumn(elem, index, array, tests = null) {
   const result = [];
   let checker = false;
   if (index < 3) {
     test(result, array, index, 3, 6);
-    checker = checkWinner(result, array[index].classList[1]);
+    checker = checkWinner(result, array[index].classList[1], tests);
   }
   return checker;
 }
 
-function checkDiagonal(elem, index, array) {
+function checkDiagonal(elem, index, array, tests = null) {
   const result = [];
   let checker = false;
   if (index === 0) {
     test(result, array, index, 4, 8);
-    checker = checkWinner(result, array[index].classList[1]);
+    checker = checkWinner(result, array[index].classList[1], tests);
   } else if (index === 2 && checker !== true) {
     test(result, array, index, 2, 4);
-    checker = checkWinner(result, array[index].classList[1]);
+    checker = checkWinner(result, array[index].classList[1], tests);
   }
   return checker;
 }
@@ -108,4 +108,6 @@ function result() {
 }
 
 
-export default { result };
+export default {
+  result, checkRow, checkColumn, checkDiagonal,
+};
