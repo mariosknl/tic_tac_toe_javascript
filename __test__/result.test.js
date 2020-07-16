@@ -211,5 +211,7 @@ test('update the stats for winner', () => {
   const newPlayer = require('../js/player');
   const player1 = newPlayer.default.newPlayer('john', 'x');
   const player2 = newPlayer.default.newPlayer('maria', 'circle');
+  elements.playerTurn.turn = 2;
   result.default.winner(player1, player2);
+  expect(player1.gamesWon).toBe(1);
 });

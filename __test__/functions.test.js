@@ -1,5 +1,3 @@
-const { fn } = require('jquery');
-
 /* eslint-disable global-require */
 beforeEach(() => {
   document.body.innerHTML = `<!DOCTYPE html>
