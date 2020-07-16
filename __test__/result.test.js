@@ -203,3 +203,13 @@ test('test if helper checks the win', () => {
   result2.default.test(result, array, 0, 1, 2);
   expect(result).not.toBe([]);
 });
+
+// test for winner function
+test('update the stats for winner', () => {
+  const elements = require('../js/elements');
+  const result = require('../js/result');
+  const newPlayer = require('../js/player');
+  const player1 = newPlayer.default.newPlayer('john', 'x');
+  const player2 = newPlayer.default.newPlayer('maria', 'circle');
+  result.default.winner(player1, player2);
+});
