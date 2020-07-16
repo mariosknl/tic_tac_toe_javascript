@@ -93,7 +93,7 @@ function checkDiagonal(elem, index, array, tests = null) {
   return checker;
 }
 
-function result() {
+function result(count = null) {
   const array = Array.from(document.querySelectorAll('.cell'));
   array.forEach((elem, index) => {
     checkRow(elem, index, array);
@@ -101,7 +101,7 @@ function result() {
     checkDiagonal(elem, index, array);
   });
   const checker = document.querySelector('.message').innerText.includes('won');
-  const count = elements.players[0].start ? 8 : 9;
+  if (count === null) count = elements.players[0].start ? 8 : 9;
   if (elements.playerTurn.turn === count && !checker) {
     draw(elements.players[0], elements.players[1]);
   }

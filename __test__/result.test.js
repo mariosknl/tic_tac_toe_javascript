@@ -125,5 +125,39 @@ test('check the columns for not a winner', () => {
   <div class="cell"></div>
 </div>`;
   const array = Array.from(document.querySelectorAll('.cell'));
-  expect(result.default.checkRow('x', 0, array, true)).toBeFalsy();
+  expect(result.default.checkColumn('x', 0, array, true)).toBeFalsy();
+});
+
+test('check the diagonal one for a winner', () => {
+  const result = require('../js/result');
+  document.getElementById('board').innerHTML = `        <div class="board circle inactive" id="board">
+  <div class="cell x"></div>
+  <div class="cell"></div>
+  <div class="cell"></div>
+  <div class="cell"></div>
+  <div class="cell x"></div>
+  <div class="cell"></div>
+  <div class="cell"></div>
+  <div class="cell"></div>
+  <div class="cell x"></div>
+</div>`;
+  const array = Array.from(document.querySelectorAll('.cell'));
+  expect(result.default.checkDiagonal('x', 0, array, true)).toBeTruthy();
+});
+
+test('check the diagonal two for a winner', () => {
+  const result = require('../js/result');
+  document.getElementById('board').innerHTML = `        <div class="board circle inactive" id="board">
+  <div class="cell"></div>
+  <div class="cell"></div>
+  <div class="cell x"></div>
+  <div class="cell circle"></div>
+  <div class="cell x"></div>
+  <div class="cell"></div>
+  <div class="cell x"></div>
+  <div class="cell"></div>
+  <div class="cell"></div>
+</div>`;
+  const array = Array.from(document.querySelectorAll('.cell'));
+  expect(result.default.checkDiagonal('x', 2, array, true)).toBeTruthy();
 });
