@@ -1,3 +1,5 @@
+const { fn } = require('jquery');
+
 /* eslint-disable global-require */
 beforeEach(() => {
   document.body.innerHTML = `<!DOCTYPE html>
@@ -115,4 +117,11 @@ test('validates user name length', () => {
   // checks for inputs less than 3 characters
   player.value = 'a';
   expect(fn.default.validateUser(player)).toBe('');
+});
+
+// restart game function
+test('restarts the game', () => {
+  const fn = require('../js/functions');
+  fn.default.restartGame();
+  expect(document.querySelector('.message').innerText).toBe('');
 });
