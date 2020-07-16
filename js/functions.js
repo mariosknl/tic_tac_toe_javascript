@@ -8,13 +8,13 @@ const togglePlayerSign = (board = elements.board) => {
   board.classList.toggle('circle');
 };
 
-const populateBoard = ({ target }, move) => {
+const populateBoard = ({ target }, move, test = null) => {
   if (target.classList.contains('circle') || target.classList.contains('x')) {
     return '';
   }
   target.classList.add(move.turn % 2 === 0 ? 'circle' : 'x');
 
-  check.result();
+  if (test === null) check.result();
   move.turn += 1;
   togglePlayerSign();
   return '';

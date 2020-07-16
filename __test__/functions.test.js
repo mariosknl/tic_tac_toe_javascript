@@ -98,8 +98,11 @@ test('populate the board with signs', () => {
   const fn = require('../js/functions');
   const elements = require('../js/elements');
   const $ = require('jquery');
+  const check = {
+    result: jest.fn(),
+  };
   elements.cells[0].addEventListener('click', (e) => {
-    fn.default.populateBoard(e, elements.playerTurn);
+    fn.default.populateBoard(e, elements.playerTurn, check);
   });
   $(elements.cells[0]).click();
   expect(elements.cells[0].classList.contains('circle')).toBeTruthy();
