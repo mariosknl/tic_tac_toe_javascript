@@ -195,3 +195,11 @@ test('test the win function', () => {
   result.default.win(true);
   expect(elements.board.classList.contains('inactive')).toBeTruthy();
 });
+// check test function
+test('test if helper checks the win', () => {
+  const result = [];
+  const array = Array.from(document.querySelectorAll('.cell'));
+  const result2 = require('../js/result');
+  result2.default.test(result, array, 0, 1, 2);
+  expect(result).not.toBe([]);
+});

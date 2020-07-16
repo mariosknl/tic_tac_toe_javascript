@@ -113,5 +113,5 @@ function result(count = null) {
 
 
 export default {
-  result, checkRow, checkColumn, checkDiagonal, draw, win,
+  result, checkRow, checkColumn, checkDiagonal, draw, win, test,
 };
