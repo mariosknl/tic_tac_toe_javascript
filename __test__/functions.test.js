@@ -77,10 +77,10 @@ test('test the player creation', () => {
         arrow.parentElement.nextElementSibling,
       );
     });
-    document.querySelectorAll('input')[0].value = 'player1';
-    $(elements.arrows[0]).click();
-    document.querySelectorAll('input')[0].value = 'player2';
-    $(elements.arrows[0]).click();
+    document.querySelectorAll('input')[1].value = 'player1';
+    $(elements.arrows[1]).click();
+    document.querySelectorAll('input')[1].value = 'player2';
+    $(elements.arrows[1]).click();
   });
   expect(elements.players[0].name).toBe('player1');
   expect(elements.players[1].name).toBe('player2');
@@ -123,5 +123,14 @@ test('validates user name length', () => {
 test('restarts the game', () => {
   const fn = require('../js/functions');
   fn.default.restartGame();
+  // check is the function runs
   expect(document.querySelector('.message').innerText).toBe('');
+});
+
+// exit game function
+test('exits the game', () => {
+  const fn = require('../js/functions');
+  const elements = require('../js/elements');
+  fn.default.exitGame();
+  expect(elements.players.length).toBe(0);
 });

@@ -65,7 +65,8 @@ function restartGame() {
   elements.playerTurn.turn = count;
 }
 
-function exitGame() {
+function exitGame(players = null) {
+  if (players !== null) elements.players = players;
   elements.players.pop();
   elements.players.pop();
   elements.winningMessage.classList.remove('active');
@@ -77,6 +78,7 @@ function exitGame() {
     cell.classList.remove(cell.classList.contains('circle') ? 'circle' : 'x');
   });
   elements.playerTurn.turn = 0;
+  return 'whatever';
 }
 
 export default {
