@@ -63,7 +63,6 @@ beforeEach(() => {
 // form submition tests
 test('test the player creation', () => {
   // add event linsterners
-  // const fn = require('../js/functions');
   const eL = require('../js/event_listeners');
   const $ = require('jquery');
 
@@ -106,4 +105,14 @@ test('populate the board with signs', () => {
   });
   $(elements.cells[0]).click();
   expect(elements.cells[0].classList.contains('circle')).toBeTruthy();
+});
+
+// validate user
+test('validates user name length', () => {
+  const player = { value: 'john' };
+  const fn = require('../js/functions');
+  expect(fn.default.validateUser(player)).toBeTruthy();
+  // checks for inputs less than 3 characters
+  player.value = 'a';
+  expect(fn.default.validateUser(player)).toBe('');
 });
