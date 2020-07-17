@@ -20,6 +20,7 @@ If you want to keep playing, the game will keep counting the games you are playi
 - HTML
 - CSS
 - Javascript
+- Jest framework (Unit test)
 
 ### LIVE VERSION
 - [GitHack](https://raw.githack.com/mariosknl/tic_tac_toe_javascript/feature_v1/index.html)
@@ -28,6 +29,10 @@ If you want to keep playing, the game will keep counting the games you are playi
 
 - `git@github.com:mariosknl/tic_tac_toe_javascript.git`
 - `open the index.html`
+
+### TEST
+- npm install
+- npm test 
 
 ### AUTHORS
 
