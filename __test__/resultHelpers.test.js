@@ -44,7 +44,7 @@ beforeEach(() => {
           <div class="img-container">
             <img src="./images/undraw_winners_ao2o.svg" />
             <div class="winners">
-              <h1 class="message">Player Something Won.</h1>
+              <h1 class="message">Player Something.</h1>
               <h6 class="message">Player one victories</h6>
               <h6 class="message">Player two victories</h6>
             </div>
@@ -60,42 +60,30 @@ beforeEach(() => {
   `;
 });
 
-// form submition tests
-test('test the player creation', () => {
-  // add event linsterners
-  const eL = require('../js/event_listeners');
-  const $ = require('jquery');
-
+// test the win function
+test('test the win function', () => {
   const elements = require('../js/elements');
-  elements.arrows.forEach((arrow) => {
-    arrow.addEventListener('click', () => {
-      eL.default.formSubmit(
-        arrow.previousElementSibling,
-        arrow.parentElement,
-        arrow.parentElement.nextElementSibling,
-      );
-    });
-    document.querySelectorAll('input')[1].value = 'player1';
-    $(elements.arrows[1]).click();
-    document.querySelectorAll('input')[1].value = 'player2';
-    $(elements.arrows[1]).click();
-  });
-  expect(elements.players[0].name).toBe('player1');
-  expect(elements.players[1].name).toBe('player2');
+  const result = require('../js/result');
+  result.default.win(true);
+  expect(elements.board.classList.contains('inactive')).toBeTruthy();
+});
+// check test function
+test('test if helper checks the win', () => {
+  const result = [];
+  const array = Array.from(document.querySelectorAll('.cell'));
+  const result2 = require('../js/result');
+  result2.default.test(result, array, 0, 1, 2);
+  expect(result).not.toBe([]);
 });
 
-// toggle player sign
-test('toggle player signs', () => {
-  const fn = require('../js/functions');
+// test for winner function
+test('update the stats for winner', () => {
   const elements = require('../js/elements');
-  fn.default.togglePlayerSign();
-  expect(elements.board.classList.contains('x')).toBeTruthy();
-});
-
-// restart game function
-test('restarts the game', () => {
-  const fn = require('../js/functions');
-  fn.default.restartGame();
-  // check is the function runs
-  expect(document.querySelector('.message').innerText).toBe('');
+  const result = require('../js/result');
+  const newPlayer = require('../js/player');
+  const player1 = newPlayer.default.newPlayer('john', 'x');
+  const player2 = newPlayer.default.newPlayer('maria', 'circle');
+  elements.playerTurn.turn = 2;
+  result.default.winner(player1, player2);
+  expect(player1.gamesWon).toBe(1);
 });

@@ -60,42 +60,35 @@ beforeEach(() => {
   `;
 });
 
-// form submition tests
-test('test the player creation', () => {
-  // add event linsterners
-  const eL = require('../js/event_listeners');
+// validate user
+test('validates user name length', () => {
+  const player = { value: 'john' };
+  const fn = require('../js/functions');
+  expect(fn.default.validateUser(player)).toBeTruthy();
+  // checks for inputs less than 3 characters
+  player.value = 'a';
+  expect(fn.default.validateUser(player)).toBe('');
+});
+
+// checking populateBoard
+test('populate the board with signs', () => {
+  const fn = require('../js/functions');
+  const elements = require('../js/elements');
   const $ = require('jquery');
-
-  const elements = require('../js/elements');
-  elements.arrows.forEach((arrow) => {
-    arrow.addEventListener('click', () => {
-      eL.default.formSubmit(
-        arrow.previousElementSibling,
-        arrow.parentElement,
-        arrow.parentElement.nextElementSibling,
-      );
-    });
-    document.querySelectorAll('input')[1].value = 'player1';
-    $(elements.arrows[1]).click();
-    document.querySelectorAll('input')[1].value = 'player2';
-    $(elements.arrows[1]).click();
+  const check = {
+    result: jest.fn(),
+  };
+  elements.cells[0].addEventListener('click', (e) => {
+    fn.default.populateBoard(e, elements.playerTurn, check);
   });
-  expect(elements.players[0].name).toBe('player1');
-  expect(elements.players[1].name).toBe('player2');
+  $(elements.cells[0]).click();
+  expect(elements.cells[0].classList.contains('circle')).toBeTruthy();
 });
 
-// toggle player sign
-test('toggle player signs', () => {
+// exit game function
+test('exits the game', () => {
   const fn = require('../js/functions');
   const elements = require('../js/elements');
-  fn.default.togglePlayerSign();
-  expect(elements.board.classList.contains('x')).toBeTruthy();
-});
-
-// restart game function
-test('restarts the game', () => {
-  const fn = require('../js/functions');
-  fn.default.restartGame();
-  // check is the function runs
-  expect(document.querySelector('.message').innerText).toBe('');
+  fn.default.exitGame();
+  expect(elements.players.length).toBe(0);
 });

@@ -187,31 +187,3 @@ test('check if the game is drawn', () => {
   result.default.result(9);
   expect(elements.board.classList.contains('inactive')).toBeTruthy();
 });
-
-// test the win function
-test('test the win function', () => {
-  const elements = require('../js/elements');
-  const result = require('../js/result');
-  result.default.win(true);
-  expect(elements.board.classList.contains('inactive')).toBeTruthy();
-});
-// check test function
-test('test if helper checks the win', () => {
-  const result = [];
-  const array = Array.from(document.querySelectorAll('.cell'));
-  const result2 = require('../js/result');
-  result2.default.test(result, array, 0, 1, 2);
-  expect(result).not.toBe([]);
-});
-
-// test for winner function
-test('update the stats for winner', () => {
-  const elements = require('../js/elements');
-  const result = require('../js/result');
-  const newPlayer = require('../js/player');
-  const player1 = newPlayer.default.newPlayer('john', 'x');
-  const player2 = newPlayer.default.newPlayer('maria', 'circle');
-  elements.playerTurn.turn = 2;
-  result.default.winner(player1, player2);
-  expect(player1.gamesWon).toBe(1);
-});
