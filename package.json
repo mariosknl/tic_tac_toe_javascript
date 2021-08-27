@@ -21,7 +21,7 @@
   "devDependencies": {
     "@babel/core": "7.15.0",
     "@babel/preset-env": "7.15.0",
-    "jest": "27.0.6"
+    "jest": "27.1.0"
   },
   "dependencies": {
     "jquery": "^3.5.1"
