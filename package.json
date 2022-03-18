@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/mariosknl/tic_tac_toe_javascript#readme",
   "devDependencies": {
-    "@babel/core": "7.17.7",
+    "@babel/core": "7.17.8",
     "@babel/preset-env": "7.16.11",
     "jest": "27.5.1"
   },
