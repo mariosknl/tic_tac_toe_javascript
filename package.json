@@ -20,7 +20,7 @@
   "homepage": "https://github.com/mariosknl/tic_tac_toe_javascript#readme",
   "devDependencies": {
     "@babel/core": "8.0.1",
-    "@babel/preset-env": "8.0.1",
+    "@babel/preset-env": "8.0.2",
     "jest": "30.4.2"
   },
   "dependencies": {
